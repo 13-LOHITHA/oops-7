@@ -1,0 +1,34 @@
+import java.util.Scanner;
+
+class EmailGenerator {
+    private String firstName;
+    private String lastName;
+
+    public EmailGenerator(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public String generateEmail() {
+        String firstPart = firstName.substring(0, Math.min(3, firstName.length())).toLowerCase();
+        String lastPart = lastName.substring(0, Math.min(4, lastName.length())).toLowerCase();
+        return firstPart + lastPart + "@example.com";
+    }
+}
+
+public class EmailAddressApp {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter first name: ");
+        String firstName = scanner.nextLine();
+
+        System.out.print("Enter last name: ");
+        String lastName = scanner.nextLine();
+
+        EmailGenerator emailGenerator = new EmailGenerator(firstName, lastName);
+        String emailAddress = emailGenerator.generateEmail();
+
+        System.out.println("Generated email address: " + emailAddress);
+    }
+}
